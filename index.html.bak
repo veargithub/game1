@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Kiwi.js - Hello World</title>
+</head>
+<body>
+<script src="js/kiwi.js"></script>
+<script type="text/javascript">
+
+	var game = new Kiwi.Game(null, 'Hello World', null, { renderer: Kiwi.RENDERER_CANVAS });
+	var myState = new Kiwi.State('myState');
+
+	myState.preload = function(){
+	    Kiwi.State.prototype.preload.call(this);
+	  	this.addImage('desk','assets/desk.jpg');
+	}
+
+	myState.create = function(){
+	    Kiwi.State.prototype.create.call(this);
+			this.desk = new Kiwi.GameObjects.StaticImage(this, this.textures['desk'], 0, 0);
+			this.addChild(this.desk);
+			alert(1);
+	}
+
+
+	game.states.addState(myState, true);
+
+</script>
+</body>
+</html>

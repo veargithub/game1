@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Kiwi.js - Hello World</title>
+</head>
+<body>
+<script src="js/kiwi.js"></script>
+<script type="text/javascript">
+
+var state = new Kiwi.State('Play');
+//alert(document.documentElement.clientWidth + " " + document.documentElement.clientHeight);
+//alert(window.innerWidth + " " + window.innerHeight);
+var clientWidth = document.documentElement.clientWidth;
+var clientHeight = document.documentElement.clientHeight;
+var cardWidth = 73, cardHeight = 97;
+
+state.preload = function () {
+    this.addImage('cardBack', './assets/cardBack.png');
+};
+
+state.create = function () {
+    var x = clientWidth * 0.9 - cardWidth;
+    var y = clientHeight / 2 - cardHeight / 2;
+//    alert(x + " " + y);
+    this.cardBack = new Kiwi.GameObjects.Sprite(this, this.textures.cardBack, x, y);
+    this.addChild(this.cardBack);
+
+    var player1 = function() {
+        var x = clientWidth / 2 - cardWidth / 2;
+        var y = clientHeight * 0.9 - cardHeight;
+    }
+
+    alert(player1.x + " " + player1.y);
+
+};
+
+var gameOptions = {
+    width: clientWidth,
+    height: clientHeight,
+    scaleType:Kiwi.Stage.SCALE_FIT
+};
+
+var game = new Kiwi.Game('game-container', 'LoadingAnImage', state, gameOptions);
+
+
+</script>
+</body>
+</html>
